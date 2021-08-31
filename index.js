@@ -1,11 +1,17 @@
 import express from "express"; //express server
+import { MongoClient } from "mongodb"; //needed this to connect with client
 const app = express();
 import dotenv from "dotenv";
 dotenv.config();
 import fs from "fs";  // for CRUD on  file 
 const PORT = process.env.PORT;
+const MONGO_URL = process.env.MONGO_URL;
+async function createconnection(){
+    return new MongoClient(MONGO_URL).connect();
+  }
 //creates a text file and writes data in it
-app.post("https://nodejs-filesystem-task.herokuapp.com/postfiles", async (request, response) => {
+app.post("/postfiles", async (request, response) => {
+    const client = await createconnection();
     //current date and time
     let date = new Date();
     let day = date.getDay();
@@ -22,7 +28,7 @@ app.post("https://nodejs-filesystem-task.herokuapp.com/postfiles", async (reques
 });
 
 //retrieves all text files
-app.get("https://nodejs-filesystem-task.herokuapp.com/getfiles", async (request, response) => {
+app.get("/getfiles", async (request, response) => {
     let result = [];
     const client = await createconnection();
     fs.readdir(".././nodejs-filesystem", function (err, files) {

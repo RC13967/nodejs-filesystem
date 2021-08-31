@@ -6,7 +6,6 @@ import fs from "fs";  // for CRUD on  file
 const PORT = process.env.PORT;
 //creates a text file and writes data in it
 app.post("https://nodejs-filesystem-task.herokuapp.com/postfiles", async (request, response) => {
-    const client = await createconnection();
     //current date and time
     let date = new Date();
     let day = date.getDay();

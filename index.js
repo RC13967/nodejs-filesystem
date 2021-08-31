@@ -1,5 +1,4 @@
 import express from "express"; //express server
-import { MongoClient } from "mongodb"; //needed this to connect with client
 const app = express();
 import dotenv from "dotenv";
 dotenv.config();

@@ -1,8 +1,11 @@
 import express from "express"; //express server
 import { MongoClient } from "mongodb"; //needed this to connect with client
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 import fs from "fs";  // for CRUD on  file 
-const MONGO_URL = "mongodb://localhost";
+const MONGO_URL = process.env.MONGO_URL; //stored in env file
+const PORT = process.env.PORT;
 //this function creates a connection
 async function createconnection() {
     return new MongoClient(MONGO_URL).connect();
@@ -43,4 +46,4 @@ app.get("/files", async (request, response) => {
     });
     response.send("data retrieved");
 });
-app.listen(8000, () => console.log("The server is started"));
+app.listen(PORT, () => console.log("The server is started"));

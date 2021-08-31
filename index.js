@@ -26,6 +26,7 @@ app.post("/postfiles", async (request, response) => {
         response.send([today, time]);
     });
 });
+
 //retrieves all text files
 app.get("/getfiles", async (request, response) => {
     let result = [];

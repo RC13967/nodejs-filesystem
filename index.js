@@ -8,7 +8,7 @@ import fs from "fs";  // for CRUD on  file
      response.send("append URL with '/postfiles' or '/getfiles' ");
  });
 //creates a text file and writes data in it
-app.post("/postfiles", (request, response) => {
+app.post("https://nodejs-filesystem-task.herokuapp.com/postfiles", (request, response) => {
     //current date and time
     let date = new Date();
     let day = date.getDay();
@@ -25,7 +25,7 @@ app.post("/postfiles", (request, response) => {
 });
 
 //retrieves all text files
-app.get("/getfiles", (request, response) => {
+app.get("https://nodejs-filesystem-task.herokuapp.com/getfiles", (request, response) => {
     let result = [];
     fs.readdir(".././nodejs-filesystem", function (err, files) {
         //listing all files using forEach

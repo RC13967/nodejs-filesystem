@@ -4,7 +4,7 @@ const app = express();
  dotenv.config();
 import fs from "fs";  // for CRUD on  file 
  const PORT = process.env.PORT;
- app.get("https://nodejs-filesystem-task.herokuapp.com", (request, response)=>{
+ app.get("https://nodejs-filesystem-task.herokuapp.com/", (request, response)=>{
      response.send("append URL with '/getfiles' ");
  });
 //creates a text file and writes data in it

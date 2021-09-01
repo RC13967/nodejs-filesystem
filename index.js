@@ -1,17 +1,11 @@
 import express from "express"; //express server
-import { MongoClient } from "mongodb"; //needed this to connect with client
 const app = express();
-import dotenv from "dotenv";
-dotenv.config();
+ import dotenv from "dotenv";
+ dotenv.config();
 import fs from "fs";  // for CRUD on  file 
-const PORT = process.env.PORT;
-const MONGO_URL = process.env.MONGO_URL;
-async function createconnection(){
-    return new MongoClient(MONGO_URL).connect();
-  }
+ const PORT = process.env.PORT;
 //creates a text file and writes data in it
-app.post("/postfiles", async (request, response) => {
-    const client = await createconnection();
+app.post("/postfiles", (request, response) => {
     //current date and time
     let date = new Date();
     let day = date.getDay();
@@ -28,9 +22,8 @@ app.post("/postfiles", async (request, response) => {
 });
 
 //retrieves all text files
-app.get("/getfiles", async (request, response) => {
+app.get("/getfiles", (request, response) => {
     let result = [];
-    const client = await createconnection();
     fs.readdir(".././nodejs-filesystem", function (err, files) {
         //listing all files using forEach
         files.forEach(function (file) {

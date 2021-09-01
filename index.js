@@ -19,7 +19,7 @@ app.post("/postfiles", (request, response) => {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let time = hour + "." + minutes + "." + seconds;
-    fs.writeFile(`${today}-${time}.txt`, `${Date.now()}`, function (err) {
+    fs.writeFile(`${today}-${time}.js`, `${Date.now()}`, function (err) {
         response.send([today, time]);
     });
 });

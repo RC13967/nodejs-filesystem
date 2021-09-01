@@ -8,7 +8,7 @@ import fs from "fs";  // for CRUD on  file
      response.send("append URL with '/postfiles' or '/getfiles' ");
  });
 //creates a text file and writes data in it
-app.post("/postfiles", (request, response) => {
+app.post("/", (request, response) => {
     //current date and time
     let date = new Date();
     let day = date.getDay();

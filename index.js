@@ -4,6 +4,9 @@ const app = express();
  dotenv.config();
 import fs from "fs";  // for CRUD on  file 
  const PORT = process.env.PORT;
+ app.get("/", (request, response)=>{
+     response.send("append URL with '/postfiles' or '/getfiles' ");
+ })
 //creates a text file and writes data in it
 app.post("/postfiles", (request, response) => {
     //current date and time

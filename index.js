@@ -5,7 +5,7 @@ const app = express();
 import fs from "fs";  // for CRUD on  file 
  const PORT = process.env.PORT;
  app.get("/", (request, response)=>{
-     response.send("append URL with '/postfiles' or '/getfiles' ");
+     response.send("append URL with  '/getfiles' ");
  });
 //creates a text file and writes data in it
 app.post("/", (request, response) => {
@@ -19,9 +19,10 @@ app.post("/", (request, response) => {
     let minutes = date.getMinutes();
     let seconds = date.getSeconds();
     let time = hour + "." + minutes + "." + seconds;
-    fs.writeFile(`${today}-${time}.txt`, `${Date.now()}`, function (err) {
-        response.send([today, time]);
-    });
+    fs.readdir(".././nodejs-filesystem", function (err, files) {
+        fs.writeFile(`${today}-${time}.txt`, `${Date.now()}`, function (err) {
+            response.send([today, time]);
+        });
 });
 
 //retrieves all text files
